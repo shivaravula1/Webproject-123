@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const collection = require('./mongo');
-const port = 3018;
-
+const port = 3019;
+const mongoose = require('mongoose');
+mongoose.connect("mongodb+srv://shreyporeddy123:1838231942@shreya-test-db.6boqb6p.mongodb.net/?retryWrites=true&w=majority&appName=shreya-test-db");
+const User = require('./mongo');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));

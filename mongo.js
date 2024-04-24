@@ -1,14 +1,5 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
-
-mongoose.connect("mongodb://0.0.0.0:27017/cheyadb38")
-    .then(() => {
-        console.log("mongodb connected");
-    })
-    .catch(() => {
-        console.log('error');
-    });
-
 autoIncrement.initialize(mongoose.connection);
 
 const shivaSchema = new mongoose.Schema({
