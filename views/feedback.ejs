@@ -38,6 +38,7 @@ debugger;
           <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
         <link rel='stylesheet' href='css/style.css'/>
          <script defer src="js/script.js"></script>
+         <script defer src="/mongo.js"></script>
         </head>
         <body>
           <nav>
@@ -114,60 +115,30 @@ height: 40vh;
       <div class="pic">
 
       </div>
-      
-      <form name="shreyaform" onsubmit="return shreyafeedback()" action="/gifts">
-    
-      
+      <form name="shreyaform" onsubmit="return shreyafeedback()" action="/postMessage" method="post">
         <div class="shreya-control">
-          <label for="name" id="label-name">
-            Name
-          </label>
-    
-          
-          <input type="text"
-             type="text"  name="nam2" pattern="[a-zA-Z]{3,}" title="Please enter only alphabets"
-            placeholder="Enter your name" required/>
-        </div>
-    
-        <div class="shreya-control">
-          <label for="email" id="label-email">
-            Email
-          </label>
-    
-         
-          <input type="email"
-            name="nam4"
-            placeholder="Enter your email" required/>
-        </div>
-    
-        <div class="shreya-control">
-          <label for="age" id="label-age">
-            Phone Number
-          </label>
-    
-         
-          <input type="phone number" name="nam1" pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" title="Please enter only numbers"
-            placeholder="Enter your Phone" required />
+            <label for="Name" id="label-name">Name</label>
+            <input type="text" name="Name" pattern="[a-zA-Z]{3,}" title="Please enter only alphabets" placeholder="Enter your name" required />
         </div>
         <div class="shreya-control">
-          <label for="age" id="label-age">
-            Address
-          </label>
+            <label for="email" id="label-email">Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required />
+        </div>
+        <div class="shreya-control">
+            <label for="Phone" id="label-phone">Phone Number</label>
+            <input type="tel" name="Phone" pattern="[0-9]{10}" title="Please enter 10 digits phone number" placeholder="Enter your Phone" required />
+        </div>
+        <div class="shreya-control">
+            <label for="address" id="label-address">Address</label>
+            <textarea cols="40" rows="5" name="address" required></textarea>
+        </div>
+        <div class="shreya-control">
+            <label for="feedback" id="label-feedback">Feedback</label>
+            <textarea cols="40" rows="5" name="feedback" required></textarea>
+        </div>
+        <button class="buttonn" type="submit" name="submit1">Send</button>
+    </form>
     
-        
-         <textarea cols="40" rows="5" name="nam3" required></textarea>
-    </div>
-          <div class="shreya-control">
-          <label for="age" id="label-age">
-            Feedback
-          </label>
-    
-        
-         <textarea cols="40" rows="5" name="nam3" required></textarea>
-    </div>
-      
-    <button class="buttonn" type="submit" name="submit1" >Send</button>
-      </form>
       
       </div>
       <style>
