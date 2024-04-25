@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
+
 autoIncrement.initialize(mongoose.connection);
 
-const shivaSchema = new mongoose.Schema({
-    _id: Number,
+const shreyaSchema = new mongoose.Schema({
     Name: {
         type: String,
         required: true
@@ -23,11 +23,17 @@ const shivaSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
+    },
+    customerId: {
+        type: String, 
+        required: true
     }
 });
 
-shivaSchema.plugin(autoIncrement.plugin, { model: 'cheyaassi6', field: '_id', startAt: 1, incrementBy: 1 });
-
-const collection = mongoose.model('cheyaassi6', shivaSchema);
-
-module.exports = collection;
+shreyaSchema.plugin(autoIncrement.plugin, {
+    model: 'cheyaassi6', // Model name
+    field: 'customerId', // Field to increment
+    startAt: 1, // Start counter at 1
+    incrementBy: 1, // Increment by 1
+    format: '001' // Format counter with leading zeros
+});
