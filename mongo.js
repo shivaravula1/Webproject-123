@@ -31,7 +31,7 @@ const shreyaSchema = new mongoose.Schema({
 });
 
 shreyaSchema.plugin(autoIncrement.plugin, {
-    model: 'cheyaassi6', // Model name
+    model: 'shreyaassi6', // Model name
     field: 'customerId', // Field to increment
     startAt: 1, // Start counter at 1
     incrementBy: 1, // Increment by 1

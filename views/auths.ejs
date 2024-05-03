@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    function shreyafeedback(){
+    var name=document.shreyaform.nam1.value;
+    var name2=document.shreyaform.nam2.value;
+    var name3=document.shreyaform.nam3.value;
+    var name4=document.shreyaform.nam4.value;
+    var name5=/^([a-zA-Z0-9\._]+)@([a-zA-Z0-9]+)\.([a-z]{2,8})?$/
+debugger;
+        if(name.length< 10)
+        {
+        alert("Please enter the valid phone number");
+        return false;
+        }
+        else if(name2.length>40){
+        alert("Please enter only 40 words");
+        return false;
+        }
+        else if(!name4.match(name5)){
+            alert("error in mail format");
+            return false;
+        }
+        else{
+        return emvalidate();
+    }
+   function emvalidate(){
+  alert("Thankyou for your response and Click ok to win exciting prices");
+}
+    }
+        </script>
+<head>
+    <title>Shreya Reddy Poreddy</title>
+</head>
+<body>
+    <html>
+        <head>
+          <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' href='css/style.css'/>
+         <script defer src="js/script.js"></script>
+         <script defer src="/mongo.js"></script>
+        </head>
+        <body>
+          <nav>
+            <div class="mannav" style="background-color: black;">
+              <div class="container" >
+                <ul class="nav" >
+                  <li><a href="/" style="text-decoration: none; color:#fff">Home</a></li>
+                  <li><a href="/hobby"  style="text-decoration: none; color:#fff">My Hobbies</a></li>
+                  <li><a href="/feedback"  style="text-decoration: none; color:#fff">Give Feedback</a></li>
+                  <li><a href="/game"  style="text-decoration: none; color:#fff">Play Tictactoe</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <style>
+          ::before {
+            content: '';
+            display: block;
+            
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            border-radius: 150vh;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+          }
+        
+        
+        .more {
+          background-color: silver;
+          padding: 1rem 2rem;
+          text-align: center;
+        }
+          </style>
+     <header style="background-color: #fff;">
+      <form name="shreyaform" onsubmit="return shreyafeedback()" action="/signin" method="post">
+        <div class="shreya-control">
+            <label for="email" id="label-email">Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required />
+        </div>
+        <div class="shreya-control">
+            <label for="address" id="label-address">Password</label>
+            <input type="tel" name="password" title="Please enter 10 digits phone number" placeholder="Enter your Password" required />
+        </div>
+        <button class="buttonn" type="submit" name="submit1">Send</button>
+    </form>
+    
+      
+      </div>
+      <style>
+        .side{
+          width: 80%;
+          height: 100%;
+          margin: auto;
+          display: grid;
+          grid-template-columns: 50% 50%;
+        }
+        .pic{
+          width: 100%;
+          height: 85%;
+          margin: auto;
+          background-image: url("./s23.jpg");
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          
+        }
+      form {
+        background-color: #fff;
+      width: 80%;
+      margin: auto;
+        margin: 50px auto;
+        padding: 30px 20px;
+       
+      }
+  
+     
+      .shreya-control {
+        text-align: left;
+        margin-bottom: 25px;
+      }
+  
+   
+      .shreya-control label {
+        display: block;
+        margin-bottom: 10px;
+      }
+  
+      
+      .shreya-control input,
+      .shreya-control select,
+      .shreya-control textarea {
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-family: inherit;
+        padding: 10px;
+        display: block;
+        width: 100%;
+      }
+  
+      
+      .shreya-control input[type="radio"],
+      .shreya-control input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+      }
+  
+     
+      button {
+        background-color: #000;
+        border: 1px solid #777;
+        color: #fff;
+        border-radius: 2px;
+        font-family: inherit;
+        font-size: 21px;
+        display: block;
+        width: 100%;
+        display: flex;
+justify-content: center;
+align-items: center;
+        padding: 20px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+      }
+    </style>
+    
+</body>
+</html> 

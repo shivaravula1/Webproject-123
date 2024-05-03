@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://shreyareddyywf59:1838231942@shreya-test-db.kavwy5f.mongodb.net/?retryWrites=true&w=majority&appName=shreya-test-db");
 app.use(express.json());
@@ -34,18 +35,76 @@ app.get('/gallery', (req, res) => {
 app.get('/sched', (req, res) => {
     res.render('sched');
 });
-
+app.get('/auth', (req, res) => {
+    res.render('auth');
+});
+app.get('/auths', (req, res) => {
+    res.render('auths');
+});
 const shreyaSchema = new mongoose.Schema({
     customerId: String,
     Name: String,
     Phone: String,
     email: String,
     address: String,
+    password: String,
     feedback: String
 });
 
-const collectiona = mongoose.model('shreyaassi6', shreyaSchema);
-module.exports = collectiona;
+const collections = mongoose.model('shreyaassi7', shreyaSchema);
+
+module.exports = collections;
+
+app.post('/signup', async (req, res) => {
+    const { email } = req.body;
+    let alexistingCustomer = await collections.findOne({ email });
+    if (alexistingCustomer) {
+        // If the email exists, return an alert
+        return res.send(`<script>alert('Email already exists');window.location.href='/auth';</script>`);
+    }
+    try {
+      // Hash the password before storing it in the database
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      
+      // Create a new user object
+      const newUser = new collections({
+        Name: req.body.Name,
+        email: req.body.email,
+        password: hashedPassword
+      });
+  
+      // Save the user to the database
+      const savedUser = await newUser.save();
+      
+      // Redirect the user to the sign-in page after successful sign-up
+      return res.send(`<script>alert('Thank you');window.location.href='/feedback';</script>`);
+    } catch (error) {
+      // Handle errors, such as duplicate username or email
+      console.error(error);
+      res.status(500).send('Error signing up. Please try again later.');
+    }
+  });
+  app.post('/signin', async (req, res) => {
+    try {
+      // Find the user by username
+      const user = await collections.findOne({ email: req.body.email });
+  
+      // Check if the user exists and the password is correct
+      if (user && await bcrypt.compare(req.body.password, user.password)) {
+        // Set session variables or JWT token to manage authentication
+       
+        const greetingMessage = `Hello, ${user.Name}!`;
+        // Redirect the user to the dashboard or home page after successful sign-in
+        return res.send(`<script>alert('${greetingMessage}');window.location.href='/feedback';</script>`);
+      } else {
+        // Invalid username or password
+        res.status(401).send('Invalid username or password.');
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error signing in. Please try again later.');
+    }
+  });
 
 app.post('/postMessage', async (req, res) => {
     const { Name, Phone, address, feedback, email } = req.body;
@@ -73,5 +132,5 @@ app.post('/postMessage', async (req, res) => {
     }
 });
 
-const port = 3024;
+const port = 3026;
 app.listen(port, () => console.info(`Listening on port ${port}`));
