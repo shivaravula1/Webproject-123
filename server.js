@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://shreyareddyywf59:1838231942@shreya-test-db.kavwy5f.mongodb.net/?retryWrites=true&w=majority&appName=shreya-test-db");
 app.use(express.json());
@@ -63,6 +64,7 @@ app.post('/signup', async (req, res) => {
     }
     try {
       // Hash the password before storing it in the database
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
       
       // Create a new user object
       const newUser = new collections({
@@ -130,5 +132,5 @@ app.post('/postMessage', async (req, res) => {
     }
 });
 
-const port = 3026;
+const port = 3027;
 app.listen(port, () => console.info(`Listening on port ${port}`));
